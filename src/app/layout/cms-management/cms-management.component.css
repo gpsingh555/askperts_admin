@@ -1,0 +1,10 @@
+::ng-deep .mat-tab-body-wrapper{
+    padding: 1rem !important;
+}
+ *{
+    font-size: 1.6rem !important;
+}
+
+.accordion-item{
+    width: 100%;
+}

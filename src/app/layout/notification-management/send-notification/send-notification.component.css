@@ -1,0 +1,24 @@
+.sub-admin-check{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.notification-right-side{
+    height: 348px;
+    border: 1px solid lightgray;
+    padding: 0px 20px 20px 20px;
+    overflow-y: auto;
+    position: relative;
+    border-top: 0px;
+}
+
+.search-boder{
+    border-radius: 5px 5px 0px 0px;
+    /* border-bottom: 0px; */
+}
+
+
+*{
+    font-size: 14px !important;
+}

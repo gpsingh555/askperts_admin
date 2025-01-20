@@ -1,0 +1,16 @@
+<div #closeDialog mat-dialog-close class=" text-end">
+    <mat-icon >clear</mat-icon>
+</div>
+<mat-dialog-content>
+    
+    <div class="row">
+        <div class="col">
+            <ckeditor [editor]="Editor" [(ngModel)]="data.value"></ckeditor>
+        </div>
+    
+    </div>
+    
+</mat-dialog-content>
+<div class="text-center mt-3">
+    <button mat-raised-button color="primary" (click)="addSettingData()">Update</button>
+</div>

@@ -1,0 +1,206 @@
+<div class="container-fluid">
+
+
+    <div class="row m-4  justify-content-center">
+        <div class="row ">
+            <div class="heading">
+                <h2>CMS Management</h2>
+            </div>
+        </div>
+        <div class="body">
+            <div class="mat-elevation-z8 ">
+                <mat-tab-group mat-align-tabs="center" animationDuration="0ms" (selectedIndexChange)="panel = $event">
+                    <mat-tab label="Askpert ">
+                        <mat-tab-group mat-align-tabs="center" animationDuration="0ms"
+                            (selectedIndexChange)="typeUser = $event">
+                            <mat-tab label="Terms & Condition">
+                                <button mat-raised-button color="primary" (click)="onclickEdit()">Edit</button>
+                                <div [innerHtml]="getLocalSettingData()"></div>
+                            </mat-tab>
+                            <mat-tab label="Privacy Policy">
+                                <button mat-raised-button color="primary" (click)="onclickEdit()">Edit</button>
+                                <div [innerHtml]="getLocalSettingData()"></div>
+                            </mat-tab>
+                            <!-- <mat-tab label="About Us">
+                                <button mat-raised-button color="primary" (click)="onclickEdit()">Edit</button>
+                                <div></div>
+                            </mat-tab> -->
+
+
+                            <mat-tab label="FAQ">
+                                <button mat-raised-button color="primary" (click)="onClickQuedtions(null)">Add</button>
+                                <div class="accordion accordion-flush mt-3" id="accordionFlushExample">
+                                    <div *ngFor="let item of faqData[0];let i = index"
+                                        class="d-flex gap-2 mb-2 align-items-top">
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="flush-headingOne">
+                                                <button class="accordion-button collapsed" type="button"
+                                                    data-bs-toggle="collapse"
+                                                    [attr.data-bs-target]="'#flush-collapse' + i" aria-expanded="false"
+                                                    [attr.aria-controls]="'#flush-collapse' + i">
+                                                    {{item?.question}}
+                                                </button>
+                                            </h2>
+                                            <div id="flush-collapse{{i}}" class="accordion-collapse collapse"
+                                                aria-labelledby="flush-headingOne"
+                                                data-bs-parent="#accordionFlushExample">
+                                                <div class="accordion-body">{{item?.answer}}</div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <button mat-raised-button color="primary" (click)="onClickQuedtions(item)">
+                                                Edit
+                                            </button>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </mat-tab>
+                        </mat-tab-group>
+                    </mat-tab>
+                    <mat-tab label="Askpert Pro">
+                        <mat-tab-group mat-align-tabs="center" animationDuration="0ms"
+                            (selectedIndexChange)="typeConsultant = $event">
+                            <mat-tab label="Terms & Condition">
+                                <button mat-raised-button color="primary" (click)="onclickEdit()">Edit</button>
+                                <div [innerHtml]="getLocalSettingData()"></div>
+                            </mat-tab>
+                            <mat-tab label="Privacy Policy">
+                                <button mat-raised-button color="primary" (click)="onclickEdit()">Edit</button>
+                                <div [innerHtml]="getLocalSettingData()"></div>
+                            </mat-tab>
+                            <!-- <mat-tab label="About Us">
+                                <button mat-raised-button color="primary" (click)="onclickEdit()">Edit</button>
+                                <p>Editor</p>
+                            </mat-tab> -->
+                            <mat-tab label="FAQ">
+                                <button mat-raised-button color="primary" (click)="onClickQuedtions(null)">Add</button>
+                                <div class="accordion accordion-flush mt-3" id="accordionFlushExample">
+                                    <div *ngFor="let item of faqData[1];let i = index"
+                                        class="d-flex gap-2 mb-2 align-items-top">
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="flush-headingOne">
+                                                <button class="accordion-button collapsed" type="button"
+                                                    data-bs-toggle="collapse"
+                                                    [attr.data-bs-target]="'#flush-collapse' + i" aria-expanded="false"
+                                                    [attr.aria-controls]="'#flush-collapse' + i">
+                                                    {{item?.question}}
+                                                </button>
+                                            </h2>
+                                            <div id="flush-collapse{{i}}" class="accordion-collapse collapse"
+                                                aria-labelledby="flush-headingOne"
+                                                data-bs-parent="#accordionFlushExample">
+                                                <div class="accordion-body">{{item?.answer}}</div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <button mat-raised-button color="primary" (click)="onClickQuedtions(item)">
+                                                Edit
+                                            </button>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </mat-tab>
+                        </mat-tab-group>
+                    </mat-tab>
+
+
+                </mat-tab-group>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<!-- <p-dialog header="Documents" [(visible)]="position" [modal]="true" [breakpoints]="{'960px': '75vw'}"
+    [style]="{width: '35vw'}" [draggable]="false" [resizable]="false">
+   -->
+<!-- <div class="multiple_image">
+      <div class="img_item">
+        <img src="{{elemetData?.documents[0]}}" class="documents-img" alt="">
+      </div>
+      <div class="img_item">
+        <img src="{{elemetData?.documents[1]}}" class="documents-img" alt="">
+      </div>
+      <div class="img_item">
+        <img src="{{elemetData?.documents[2]}}" class="documents-img" alt="">
+      </div>
+      <div class="img_item">
+        <img src="{{elemetData?.documents[4]}}" class="documents-img" alt="">
+      </div>
+  
+    </div> -->
+
+<!--    
+  <div class="d-flex gap-2 justify-content-center">
+    <div class="card_custom" (click)="redirectToNewTab(elemetData?.documents[0])">
+      <img class="document_icon" src="assets/images/passport.svg" alt="">
+      <button mat-flat-button color="primary">Passport/Id</button>
+    </div>
+  
+    <div class="card_custom" (click)="redirectToNewTab(elemetData?.documents[1])">
+      <img class="document_icon" src="assets/images/cv.svg" alt="">
+      <button mat-flat-button color="primary">CV</button>
+    </div>
+  
+    <div class="card_custom" (click)="redirectToNewTab(elemetData?.documents[2])">
+      <img class="document_icon" src="assets/images/certificate.svg" alt="">
+      <button mat-flat-button color="primary">Certificate</button>
+    </div>
+  
+    <div class="card_custom" (click)="redirectToNewTab(elemetData?.documents[3])">
+      <img class="document_icon" src="assets/images/documents.svg" alt="">
+      <button mat-flat-button color="primary">Others</button>
+    </div>
+  
+  
+  </div> -->
+
+<!-- </p-dialog> -->
+
+
+
+<!----------------Address Modal------->
+<!-- <p-dialog header="Address" [(visible)]="addressModal" [modal]="true" [breakpoints]="{'960px': '75vw'}"
+    [style]="{width: '45vw'}" [draggable]="false" [resizable]="false">
+  
+    <div class="multiple_image"> {{elemetData?.address}}</div>
+  
+  </p-dialog> -->
+
+<!----------------------------------- Bank details modal  --------------------------------->
+<!-- <p-dialog header="Bank Details" [(visible)]="bank" [modal]="true" [breakpoints]="{'960px': '75vw'}"
+    [style]="{width: '45vw'}" [draggable]="false" [resizable]="false">
+  
+    <div class="modal_body">
+      <div class="row">
+        <div class="col">
+          <table>
+            <tr>
+              <th>Account Holder Name</th>
+              <td>{{elemetBankData?.accountName}}</td>
+            </tr>
+  
+            <tr>
+              <th>Account Number</th>
+              <td>{{elemetBankData?.accountNumber}}</td>
+            </tr>
+            <tr>
+              <th>IBAN Code</th>
+              <td>{{elemetBankData?.ibanNumber}}</td>
+            </tr>
+          </table>
+        </div>
+  
+      </div>
+    </div>
+  
+  </p-dialog> -->

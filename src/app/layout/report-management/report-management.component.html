@@ -1,0 +1,239 @@
+<div class="container-fluid">
+
+
+    <div class="row m-4  justify-content-center">
+        <div class="row ">
+            <div class="heading">
+                <h2>Report Management</h2>
+            </div>
+        </div>
+
+        <div class="body">
+            <div class="mat-elevation-z8 ">
+                <div class="header_action">
+                    <div class="table-search">
+
+                       <form [formGroup]="dateForm">
+                        <mat-form-field appearance="outline">
+                            <mat-date-range-input [rangePicker]="picker1" [max]="today">
+                                <input matStartDate placeholder="Start date" formControlName="from">
+                                <input  matEndDate placeholder="End date" formControlName="to">
+                            </mat-date-range-input>
+                            
+                            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                            <mat-date-range-picker #picker1>
+                                <mat-datepicker-actions>
+                                    <button (click)="reset()" mat-button matDatepickerCancel>Reset</button>
+                                    <button (click)="applyFilter()" mat-raised-button color="primary" matDatepickerApply>Apply</button>
+                                </mat-datepicker-actions>
+                            </mat-date-range-picker>
+                        </mat-form-field>
+                        </form>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <mat-card class="custom_card">
+                            <mat-checkbox (change)="checkedCheckbox1()" name="gender" value="1" [(ngModel)]="checked.checkbox1">
+
+                            </mat-checkbox>
+
+                            <div class="text-center">
+                                <div class="card_icon">
+                                    <i class="fa fa-users" aria-hidden="true"></i>
+                                </div>
+                                <p>Total Number of Users</p>
+                                <span>{{reportList?.userCount}}</span>
+
+
+                            </div>
+                        </mat-card>
+                    </div>
+                    <div class="col-4">
+                        <mat-card class="custom_card">
+                            <mat-checkbox (change)="checkedCheckbox2()" name="gender" value="1" [(ngModel)]="checked.checkbox2"></mat-checkbox>
+
+                            <div class="text-center">
+                                <div class="card_icon">
+                                    <i class="fa fa-car" aria-hidden="true"></i>
+                                </div>
+                                <p>Total Number of Consultant</p>
+                                <span>{{reportList?.consultantCount}}</span>
+
+
+                            </div>
+                        </mat-card>
+                    </div>
+                    <div class="col-4">
+                        <mat-card class="custom_card">
+                            <mat-checkbox (change)="checkedCheckbox3()" name="gender" value="1" [(ngModel)]="checked.checkbox3"></mat-checkbox>
+
+                            <div class="text-center">
+                                <div class="card_icon">
+                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                </div>
+                                <p>Total Number of Consultations Performed</p>
+                                <span>{{reportList?.consulatDneCount}}</span>
+
+
+                            </div>
+                        </mat-card>
+                    </div>
+                    <div class="col-4">
+                        <mat-card class="custom_card">
+                            <mat-checkbox (change)="checkedCheckbox4()" name="gender" value="1" [(ngModel)]="checked.checkbox4"></mat-checkbox>
+
+                            <div class="text-center">
+                                <div class="card_icon">
+                                    <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+                                </div>
+                                <p>Total Revenue</p>
+                                <span>{{reportList?.revenue1}}</span>
+
+
+                            </div>
+                        </mat-card>
+                    </div>
+                    <!-- <div class="col-4">
+                        <mat-card class="custom_card">
+                            <mat-checkbox name="gender" value="1"></mat-checkbox>
+
+                            <div class="text-center">
+                                <div class="card_icon">
+                                    <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+                                </div>
+                                <p>Cancelled Orders</p>
+                                <span>1</span>
+
+
+                            </div>
+                        </mat-card>
+                    </div> -->
+                    <!-- <div class="col-4">
+                        <mat-card class="custom_card">
+                            <mat-checkbox name="gender" value="1"></mat-checkbox>
+
+                            <div class="text-center">
+                                <div class="card_icon">
+                                    <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+                                </div>
+                                <p>Complete Orders</p>
+                                <span>520</span>
+
+
+                            </div>
+                        </mat-card>
+                    </div> -->
+                    <!-- <div class="col-4">
+                        <mat-card class="custom_card">
+                            <mat-checkbox name="gender" value="1"></mat-checkbox>
+
+                            <div class="text-center">
+
+                                <p>Total Revenue</p>
+                                <span>520</span>
+
+
+                            </div>
+                        </mat-card>
+                    </div> -->
+
+                </div>
+                <div class="row mt-3">
+                    <div class="col-12 text-center">
+                        <button (click)="exportToExcel()" mat-flat-button color="primary">Export</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<!-- <p-dialog header="Documents" [(visible)]="position" [modal]="true" [breakpoints]="{'960px': '75vw'}"
+    [style]="{width: '35vw'}" [draggable]="false" [resizable]="false">
+   -->
+<!-- <div class="multiple_image">
+      <div class="img_item">
+        <img src="{{elemetData?.documents[0]}}" class="documents-img" alt="">
+      </div>
+      <div class="img_item">
+        <img src="{{elemetData?.documents[1]}}" class="documents-img" alt="">
+      </div>
+      <div class="img_item">
+        <img src="{{elemetData?.documents[2]}}" class="documents-img" alt="">
+      </div>
+      <div class="img_item">
+        <img src="{{elemetData?.documents[4]}}" class="documents-img" alt="">
+      </div>
+  
+    </div> -->
+
+<!--    
+  <div class="d-flex gap-2 justify-content-center">
+    <div class="card_custom" (click)="redirectToNewTab(elemetData?.documents[0])">
+      <img class="document_icon" src="assets/images/passport.svg" alt="">
+      <button mat-flat-button color="primary">Passport/Id</button>
+    </div>
+  
+    <div class="card_custom" (click)="redirectToNewTab(elemetData?.documents[1])">
+      <img class="document_icon" src="assets/images/cv.svg" alt="">
+      <button mat-flat-button color="primary">CV</button>
+    </div>
+  
+    <div class="card_custom" (click)="redirectToNewTab(elemetData?.documents[2])">
+      <img class="document_icon" src="assets/images/certificate.svg" alt="">
+      <button mat-flat-button color="primary">Certificate</button>
+    </div>
+  
+    <div class="card_custom" (click)="redirectToNewTab(elemetData?.documents[3])">
+      <img class="document_icon" src="assets/images/documents.svg" alt="">
+      <button mat-flat-button color="primary">Others</button>
+    </div>
+  
+  
+  </div> -->
+
+<!-- </p-dialog> -->
+
+
+
+<!----------------Address Modal------->
+<!-- <p-dialog header="Address" [(visible)]="addressModal" [modal]="true" [breakpoints]="{'960px': '75vw'}"
+    [style]="{width: '45vw'}" [draggable]="false" [resizable]="false">
+  
+    <div class="multiple_image"> {{elemetData?.address}}</div>
+  
+  </p-dialog> -->
+
+<!----------------------------------- Bank details modal  --------------------------------->
+<!-- <p-dialog header="Bank Details" [(visible)]="bank" [modal]="true" [breakpoints]="{'960px': '75vw'}"
+    [style]="{width: '45vw'}" [draggable]="false" [resizable]="false">
+  
+    <div class="modal_body">
+      <div class="row">
+        <div class="col">
+          <table>
+            <tr>
+              <th>Account Holder Name</th>
+              <td>{{elemetBankData?.accountName}}</td>
+            </tr>
+  
+            <tr>
+              <th>Account Number</th>
+              <td>{{elemetBankData?.accountNumber}}</td>
+            </tr>
+            <tr>
+              <th>IBAN Code</th>
+              <td>{{elemetBankData?.ibanNumber}}</td>
+            </tr>
+          </table>
+        </div>
+  
+      </div>
+    </div>
+  
+  </p-dialog> -->

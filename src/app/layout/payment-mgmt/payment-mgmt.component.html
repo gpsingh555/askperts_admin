@@ -1,0 +1,322 @@
+<div class="container-fluid">
+
+    <div class="row m-4 justify-content-center">
+        <div class="row mb-4">
+            <div class="heading d-flex justify-content-between">
+                <h2>Payment Management </h2>
+
+            </div>
+        </div>
+
+        <div class="body">
+            <div class="mat-elevation-z8 ">
+
+                <mat-tab-group mat-align-tabs="center">
+                    <mat-tab label="Plan Payment">
+                        <div class="header_action d-flex align-items-center gap-2 p-3">
+                            <div class="table-search">
+                                <mat-form-field appearance="outline">
+                                    <mat-icon matPrefix>search</mat-icon>
+                                    <!-- <input matInput placeholder="Search"> -->
+                                    <input matInput (keyup)="applyFilterSearchPayment($event)" placeholder="Search"
+                                        #input class="form-control">
+                                </mat-form-field>
+                            </div>
+                            <div class="form-date datein">
+                                <!-- =========== payment================ -->
+
+                                <mat-form-field>
+                                    <!-- <mat-label>Choose a date</mat-label> -->
+                                    <input matInput [matDatepicker]="pickerFrom" placeholder="From Date"
+                                    [(ngModel)]="fromDate" [ngModelOptions]="{standalone: true}"
+                                    (dateChange)="dateFilterForpayment()">
+                                    <mat-datepicker-toggle matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
+                                    <mat-datepicker #pickerFrom></mat-datepicker>
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <!-- <mat-label>Choose a date</mat-label> -->
+                                    <input matInput [matDatepicker]="pickerTo" placeholder="To Date"
+                                    [(ngModel)]="toDate" [ngModelOptions]="{standalone: true}"
+                                    (dateChange)="dateFilterForpayment()">
+                                    <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
+                                    <mat-datepicker #pickerTo></mat-datepicker>
+                                </mat-form-field>
+
+                                <!-- <mat-form-field class="tulabi-date">
+                                    <input matInput [matDatepicker]="fromDatepicker" placeholder="From  Date for payout"
+                                        [(ngModel)]="fromDate" [ngModelOptions]="{standalone: true}"
+                                        (dateChange)="dateFilterForpayment()">
+                                    <mat-datepicker-toggle matSuffix [for]="fromDatepicker"></mat-datepicker-toggle>
+                                    <mat-datepicker #fromDatepicker></mat-datepicker>
+                                </mat-form-field>
+
+                                <mat-form-field class="tulabi-date">
+                                    <input matInput [matDatepicker]="toDatepicker" placeholder="To Date"
+                                        [(ngModel)]="toDate" [ngModelOptions]="{standalone: true}"
+                                        (dateChange)="dateFilterForpayment()">
+                                    <mat-datepicker-toggle matSuffix [for]="toDatepicker"></mat-datepicker-toggle>
+                                    <mat-datepicker #toDatepicker></mat-datepicker>
+                                </mat-form-field> -->
+
+
+                                <!-- </mat-form-field> -->
+                            </div>
+                            <div class="payout">
+                                <span>Total Amount - </span>
+                                <i class="bi bi-currency-dollar"></i>
+                                <span> {{totalAmount}}</span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="table-responsive">
+                            <table mat-table [dataSource]="dataSource">
+
+                                <!-- Position Column -->
+                                <ng-container matColumnDef="position">
+                                    <th mat-header-cell *matHeaderCellDef> S.No. </th>
+                                    <td mat-cell *matCellDef="let element; let i = index">
+                                        {{ paginator.pageIndex * paginator.pageSize + (i + 1) }}
+                                    </td>
+                                </ng-container>
+
+                                <!-- transaction_id Column -->
+                                <ng-container matColumnDef="transaction_id">
+                                    <th mat-header-cell *matHeaderCellDef> Transaction Id</th>
+                                    <td mat-cell *matCellDef="let element"> {{element._id}} </td>
+                                </ng-container>
+
+                                <!-- Date_time Column -->
+                                <ng-container matColumnDef="date_time">
+                                    <th mat-header-cell *matHeaderCellDef> Date & Time </th>
+                                    <td mat-cell *matCellDef="let element"> {{element.createdAt | date:'medium'}} </td>
+                                </ng-container>
+
+                                <!-- amount Column -->
+                                <ng-container matColumnDef="amount">
+                                    <th mat-header-cell *matHeaderCellDef> <i class="bi bi-currency-dollar"></i>Amount
+                                    </th>
+                                    <td mat-cell *matCellDef="let element"><i class="bi bi-currency-dollar"></i>
+                                        {{element.amount}} </td>
+                                </ng-container>
+
+                                <!-- plan_name Column -->
+                                <ng-container matColumnDef="plan_name">
+                                    <th mat-header-cell *matHeaderCellDef> Plan Name </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        {{element?.planName}}
+                                    </td>
+                                </ng-container>
+
+                                <!-- user_name Column -->
+                                <ng-container matColumnDef="user_name">
+                                    <th mat-header-cell *matHeaderCellDef> User Name </th>
+                                    <td mat-cell *matCellDef="let element">{{ element?.user?.firstName }}</td>
+                                </ng-container>
+
+
+                                <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                            </table>
+                        </div>
+
+                        <mat-paginator #paginator="matPaginator" [pageSizeOptions]="[10, 20, 30]" showFirstLastButtons
+                            aria-label="Select page of periodic elements">
+                        </mat-paginator>
+                    </mat-tab>
+                    <mat-tab label="Payout">
+                        <div class="header_action d-flex align-items-center gap-2">
+                            <div class="table-search">
+                                <mat-form-field appearance="outline">
+                                    <mat-icon matPrefix>search</mat-icon>
+                                    <!-- <input matInput (keyup)="applyFilterSearchPayout($event)"  placeholder="Search" #input1 class="form-control"> -->
+                                    <input matInput (keyup)="applyFilterSearchPayout($event)" placeholder="Search"
+                                        #input1 class="form-control">
+                                    <!-- <input type="text" placeholder="search" (keyup)="filterData($event)" class="form-control" /> -->
+
+                                    <!-- <input type="text" placeholder="search" (keyup)="filterData($event)" class="form-control" /> -->
+                                    <!-- <input matInput (keyup)="filterData($event)"  placeholder="Search" #input1 class="form-control"> -->
+
+
+                                </mat-form-field>
+                            </div>
+                            <div class="form-date datein">
+                                <!-- <h1>payment</h1> -->
+                                <!-- payout  -->
+                                <mat-form-field class="tulabi-date">
+                                    <input matInput [matDatepicker]="fromDatepicker" placeholder="From  Date for payout"
+                                        [(ngModel)]="from" [ngModelOptions]="{standalone: true}"
+                                        (dateChange)="dateFilterForpayout()">
+                                    <mat-datepicker-toggle matSuffix [for]="fromDatepicker"></mat-datepicker-toggle>
+                                    <mat-datepicker #fromDatepicker></mat-datepicker>
+                                </mat-form-field>
+
+                                <mat-form-field class="tulabi-date">
+                                    <input matInput [matDatepicker]="toDatepicker" placeholder="To Date"
+                                        [(ngModel)]="to" [ngModelOptions]="{standalone: true}"
+                                        (dateChange)="dateFilterForpayout()">
+                                    <mat-datepicker-toggle matSuffix [for]="toDatepicker"></mat-datepicker-toggle>
+                                    <mat-datepicker #toDatepicker></mat-datepicker>
+                                </mat-form-field>
+                                <!-- </mat-form-field> -->
+                            </div>
+
+                            <!-- <div class="form-date">
+                                <mat-form-field appearance="outline">
+                                    <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+                                        <input matStartDate placeholder="Start date" formControlName="start">
+                                        <input matEndDate placeholder="End date" formControlName="end">
+                                    </mat-date-range-input>
+                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-date-range-picker #picker>
+                                        <mat-datepicker-actions>
+                                            <button mat-button matDatepickerCancel (click)="reset()">Cancel</button>
+                                            <button mat-raised-button color="primary" matDatepickerApply  (click)="FilterByDateOnpayout()" >Apply</button>
+                                        </mat-datepicker-actions>
+                                    </mat-date-range-picker>
+                                    <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Invalid
+                                        start date</mat-error>
+                                    <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid
+                                        end date</mat-error>
+                                </mat-form-field>
+                            </div> -->
+
+                            <div class="payout">
+                                <span>Total Payout</span>
+                                <i class="bi bi-currency-dollar"></i>
+                                <span>&nbsp;{{totalAmountD.total}} K</span>
+                            </div>
+                            <div class="payout">
+                                <span>Total Pending</span>
+                                <i class="bi bi-currency-dollar"></i>
+                                <span>&nbsp;{{totalAmountD.pending}} K</span>
+                            </div>
+                            <button mat-flat-button color="primary" (click)="viewDialog()">Set commission</button>
+
+                        </div>
+                        <div class="table-responsive">
+                            <table mat-table [dataSource]="dataSource1">
+
+                                <!-- Position Column -->
+                                <ng-container matColumnDef="position">
+                                    <th mat-header-cell *matHeaderCellDef> S.No. </th>
+                                    <td mat-cell *matCellDef="let element; let i=index"> {{ paginator1.pageIndex *
+                                        paginator1.pageSize + (i + 1) }} </td>
+                                </ng-container>
+
+                                <!-- consultant_name Column -->
+                                <ng-container matColumnDef="consultant_name">
+                                    <th mat-header-cell *matHeaderCellDef> Consultant Name</th>
+                                    <td mat-cell *matCellDef="let element"> {{element.consultant?.accountName}} </td>
+                                </ng-container>
+
+                                <!-- Date_time Column -->
+                                <ng-container matColumnDef="date_time">
+                                    <th mat-header-cell *matHeaderCellDef> Date & Time </th>
+                                    <td mat-cell *matCellDef="let element"> {{element?.call_start_at | date:'medium'}}
+                                    </td>
+                                </ng-container>
+
+                                <!-- amount Column -->
+                                <ng-container matColumnDef="amount">
+                                    <th mat-header-cell *matHeaderCellDef><i class="bi bi-currency-dollar"></i> Amount
+                                    </th>
+                                    <td mat-cell *matCellDef="let element"> <i
+                                            class="bi bi-currency-dollar"></i>{{element.amount}} </td>
+                                </ng-container>
+
+                                <!-- call_duration Column -->
+                                <ng-container matColumnDef="call_duration">
+                                    <th mat-header-cell *matHeaderCellDef> Call Duration </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        {{element.time_duration}}
+                                    </td>
+                                </ng-container>
+                                <!-- category Column -->
+                                <ng-container matColumnDef="category">
+                                    <th mat-header-cell *matHeaderCellDef> Category </th>
+                                    <td mat-cell *matCellDef="let element"> {{element.category?.categoryName}} </td>
+                                </ng-container>
+
+                                <!-- user_name Column -->
+                                <ng-container matColumnDef="user_name">
+                                    <th mat-header-cell *matHeaderCellDef> User Name </th>
+                                    <td mat-cell *matCellDef="let element">{{ element.user?.firstName }}
+                                        {{element.user?.lastName}}</td>
+                                </ng-container>
+
+                                <!-- payment_status Column -->
+                                <ng-container matColumnDef="payment">
+                                    <th mat-header-cell *matHeaderCellDef> Payment Status </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <span *ngIf="element?.paymentStatus == 0">Unpaid</span>
+                                        <span *ngIf="element?.paymentStatus == 1">Paid</span>
+                                    </td>
+
+                                </ng-container>
+
+                                <ng-container matColumnDef="payment_status">
+                                    <th mat-header-cell *matHeaderCellDef> Payment Status </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <select class="form-select" aria-label="Default select example"
+                                            (change)='getValue($event,element._id)'>
+                                            <option selected hidden value=''>Select Status</option>
+                                            <option value="0">Unpaid</option>
+                                            <option value="1">Paid</option>
+                                        </select>
+                                    </td>
+                                </ng-container>
+
+                                <tr mat-header-row *matHeaderRowDef="displayedColumns1; sticky: true"></tr>
+                                <tr mat-row *matRowDef="let row; columns: displayedColumns1;"></tr>
+                            </table>
+                        </div>
+
+                        <mat-paginator #paginator1="matPaginator" [pageSizeOptions]="[10, 20, 30]" showFirstLastButtons
+                            aria-label="Select page of periodic elements">
+                        </mat-paginator>
+                    </mat-tab>
+
+                </mat-tab-group>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+<!-- view modal starts -->
+<p-dialog header="Consultant Per Call Fee" [(visible)]="view" [modal]="true" [style]="{width: '30vw'}"
+    [maximizable]="false" [draggable]="false" [resizable]="false">
+
+    <div class="modal_body ">
+
+        <div class="row  ">
+            <div class="col">
+                <form [formGroup]="commisionForm">
+                    <div class="form-group mb-3">
+                        <label for="validationCustom03" class="form-label"> Consultant</label>
+                        <input type="text" class="form-control" value="" formControlName="consultant_per_call_fee">
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="validationCustom03" class="form-label"> Last Change Date</label>
+                        <input type="text" class="form-control" value="{{commission.modified_at | date}}"
+                            formControlName="is_update" readonly>
+                    </div>
+
+                    <div class="text-center">
+                        <button mat-flat-button color="primary" (click)="getConsultantPerCallFee()" id="closemodel">
+                            Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</p-dialog>
+
+<!-- view modal ends -->

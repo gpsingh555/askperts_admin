@@ -1,0 +1,16 @@
+.height-80{
+    height: 80vh;
+}
+
+::ng-deep .mat-date-range-input-container {
+    font-size: 14px !important;
+}
+.card h3{
+    text-transform: capitalize;
+}
+
+.dash-icon{
+    font-size: 4rem;
+    width: 4rem;
+    height: 4rem;
+}

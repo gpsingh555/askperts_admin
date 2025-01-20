@@ -1,0 +1,609 @@
+<div class="container-fluid">
+
+
+  <div class="row m-4  justify-content-center">
+    <div class="row ">
+      <div class="heading">
+        <h2>Pro Management</h2>
+      </div>
+    </div>
+
+    <div class="body">
+      <div class="mat-elevation-z8 ">
+        <mat-tab-group mat-align-tabs="center" animationDuration="0ms">
+          <mat-tab label="New">
+            <div class=" table-search">
+              <mat-form-field appearance="outline" class="mt-3px">
+                <mat-icon matPrefix>search</mat-icon>
+                <input matInput placeholder="Search" (keyup)="searchNewConsult($event)">
+              </mat-form-field>
+              <!-- <div class=" ">
+                <select name="filter" id="" class="form-select" (change)="consultTypeNewFilter($event)">
+                  <option value="" selected hidden>Choose Filter</option>
+                  <option value="1">All</option>
+                   
+                  <option *ngFor="let item of categories;let i=index" [value]="item._id">{{item.categoryName}}</option>
+                
+                </select>
+
+
+              </div> -->
+              <!-- <div class=" ">
+                <select name="rating" id="rating" class="form-select">
+                  <option value="" selected hidden>Choose Rating</option>
+
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div> -->
+            </div>
+            <div class="table-responsive">
+
+
+              <table mat-table [dataSource]="dataSourceOne">
+                <!--- Note that these columns can be defined in any order.
+                                        The actual rendered columns are set as a property on the row definition" -->
+
+                <!-- Position Column -->
+                <ng-container matColumnDef="position">
+                  <th mat-header-cell *matHeaderCellDef>S.No.</th>
+                  <td mat-cell *matCellDef="let element; let i = index">
+                    {{ TableOnePaginator.pageIndex * TableOnePaginator.pageSize + (i + 1) }}
+                  </td>
+                </ng-container>
+
+                <!-- user_name Column -->
+                <ng-container matColumnDef="user_name">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>User Name</th>
+                  <td mat-cell *matCellDef="let element">{{ element?.firstName }} {{ element?.lastName }}</td>
+                </ng-container>
+
+                <!-- email Column -->
+                <ng-container matColumnDef="email">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Email Address</th>
+                  <td mat-cell *matCellDef="let element">{{ element.email ? element.email : '-' }}</td>
+                </ng-container>
+
+                <!-- number Column -->
+                <ng-container matColumnDef="number">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Mobile Number</th>
+                  <td mat-cell *matCellDef="let element">{{ element?.countryCode }} {{ element?.mobileNumber }}</td>
+                </ng-container>
+
+                <!-- type Column -->
+                <ng-container matColumnDef="type">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Consultant Type</th>
+                  <td mat-cell *matCellDef="let element">
+                    <span *ngFor="let category of element?.consultantType; let i = index">
+                      {{category?.categoryName}} <span *ngIf="element?.consultantType.length -1 != i"> ,</span>
+                    </span>
+                  </td>
+                </ng-container>
+
+                <!-- address Column -->
+                <ng-container matColumnDef="address">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Address</th>
+                  <td mat-cell *matCellDef="let element">
+                    <button mat-stroked-button color="primary" (click)="showAddressDialog(element)">
+                      <i class="bi bi-eye"></i> View
+                    </button>
+                  </td>
+                </ng-container>
+
+
+                <!-- experience Column -->
+                <ng-container matColumnDef="experience">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Experience (Year)</th>
+                  <td mat-cell *matCellDef="let element">{{ element.experience }}</td>
+                </ng-container>
+
+
+
+                <!-- gender Column -->
+                <ng-container matColumnDef="gender">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Gender</th>
+                  <td mat-cell *matCellDef="let element">{{ (element.gender == 1) ? "Male" : (element.gender == 2) ?
+                    'Female' : (element.gender == 3) ? 'Other' : 'NA'}}</td>
+                </ng-container>
+
+
+
+                <!-- nationality Column -->
+                <ng-container matColumnDef="nationality">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Nationality</th>
+                  <td mat-cell *matCellDef="let element">{{ element.nationality }}</td>
+                </ng-container>
+
+
+
+                <!-- document Column -->
+                <ng-container matColumnDef="document">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Document</th>
+                  <td mat-cell *matCellDef="let element">
+                    <button mat-stroked-button color="primary" (click)="showModalDialog(element)"><i class="bi bi-eye"></i> View</button>
+                  </td>
+                </ng-container>
+
+
+
+                <!-- bank_details Column -->
+                <ng-container matColumnDef="bank_details">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Bank Details</th>
+                  <td mat-cell *matCellDef="let element">
+                    <button mat-stroked-button color="primary" (click)="banklDialog(element)"><i class="bi bi-eye"></i> View</button>
+
+                  </td>
+                </ng-container>
+
+
+
+                <!-- language Column -->
+                <ng-container matColumnDef="language">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Preferred Language</th>
+                  <td mat-cell *matCellDef="let element">{{ element.language }}</td>
+                </ng-container>
+
+                <!-- action Column -->
+                <ng-container matColumnDef="action">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+                  <td mat-cell *matCellDef="let element">
+                    <div class="d-flex justify-content-center gap-2">
+                      <button mat-mini-fab color="primary">
+                        <mat-icon title="Accept" (click)='AcceptReject(element._id, true)'>check</mat-icon>
+                      </button>
+
+                      <button mat-mini-fab color="warn">
+                        <mat-icon title="Reject" (click)='AcceptReject(element._id, false)'>clear</mat-icon>
+                      </button>
+                    </div>
+                  </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumnsOne; sticky: true"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumnsOne"></tr>
+              </table>
+
+
+            </div>
+            <mat-paginator #TableOnePaginator="matPaginator" [pageSize]="10"
+              [pageSizeOptions]="[ 10, 20, 30]"></mat-paginator>
+          </mat-tab>
+          <mat-tab label="Accepted">
+
+            <div class="m-8 table-search">
+              <mat-form-field appearance="outline" class="mt-3px">
+                <mat-icon matPrefix>search</mat-icon>
+                <input matInput placeholder="Search" (keyup)="searchAccepted($event)">
+              </mat-form-field>
+              <div>
+                <select class="form-select" name="filter" id="" (change)="consultTypeAcceptFilter1($event)">
+                  <option value="" selected hidden>Choose Filter</option>
+
+                  <option value="1">All</option>
+                   
+                  <option *ngFor="let item of categories;let i=index" [value]="item._id">{{item.categoryName}}</option>
+                </select>
+              </div>
+              <div>
+                <select class="form-select" name="rating" id="rating"  (change)="filterRating($event)">
+                  <option value="" selected hidden>Choose Rating</option>
+                  <option value="0">All</option>
+                   
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table mat-table [dataSource]="dataSourceTwo">
+                <!--- Note that these columns can be defined in any order.
+                                        The actual rendered columns are set as a property on the row definition" -->
+
+                <!-- Position Column -->
+                <ng-container matColumnDef="position">
+                  <th mat-header-cell *matHeaderCellDef>S.No.</th>
+                  <td mat-cell *matCellDef="let element; let i = index">
+                    {{ TableOnePaginator.pageIndex * TableOnePaginator.pageSize + (i + 1) }}
+                  </td>
+                </ng-container>
+
+                <!-- user_name Column -->
+                <ng-container matColumnDef="user_name">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>User Name</th>
+                  <td mat-cell *matCellDef="let element">{{ element?.firstName }} {{ element?.lastName }}</td>
+                </ng-container>
+
+                <!-- email Column -->
+                <ng-container matColumnDef="email">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Email Address</th>
+                  <td mat-cell *matCellDef="let element">{{ element.email ? element.email : '-' }}</td>
+                </ng-container>
+
+                <!-- number Column -->
+                <ng-container matColumnDef="number">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Mobile Number</th>
+                  <td mat-cell *matCellDef="let element">{{ element?.countryCode }} {{ element?.mobileNumber }}</td>
+                </ng-container>
+
+                <!-- type Column -->
+                <ng-container matColumnDef="type">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Consultant Type</th>
+                  <td mat-cell *matCellDef="let element">
+                    <span *ngFor="let category of element?.consultantType; let i = index">
+                      {{category?.categoryName}} <span *ngIf="element?.consultantType.length -1 != i"> ,</span>
+                    </span>
+                  </td>
+                </ng-container>
+
+                <!-- proof Column -->
+                <ng-container matColumnDef="proof">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Address</th>
+                  <td mat-cell *matCellDef="let element">
+                    <button mat-stroked-button color="primary" (click)="showAddressDialog(element)">
+                      <i class="bi bi-eye"></i> View
+                    </button>
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="gender">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Gender</th>
+                  <td mat-cell *matCellDef="let element">{{ (element.gender == 1) ? "Male" : (element.gender == 2) ?
+                    'Female' : (element.gender == 3) ? 'Other' : 'NA'}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="document">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Document</th>
+                  <td mat-cell *matCellDef="let element">
+                    <button mat-stroked-button color="primary" (click)="showModalDialog(element)"><i class="bi bi-eye"></i> View</button>
+                  </td>
+                </ng-container>
+
+                <!-- experience Column -->
+                <ng-container matColumnDef="experience">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Experience (Year)</th>
+                  <td mat-cell *matCellDef="let element">{{ element.experience }}</td>
+                </ng-container>
+
+
+
+                <!-- total_user Column -->
+                <ng-container matColumnDef="total_user">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Total No. Of Consultation Done</th>
+                  <td mat-cell *matCellDef="let element">{{ element?.calling }}</td>
+                </ng-container>
+
+
+
+                <!-- status Column -->
+                <ng-container matColumnDef="status">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+                  <td mat-cell *matCellDef="let element">{{ element.isBlocked == 1 ?'InActive':'Active' }}</td>
+                </ng-container>
+
+
+
+
+
+
+
+                <!-- bank_details Column -->
+                <ng-container matColumnDef="bank_details">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Bank Details</th>
+                  <td mat-cell *matCellDef="let element">
+                    <button mat-stroked-button color="primary" (click)="banklDialog(element)"><i class="bi bi-eye"></i> View</button>
+                  </td>
+                </ng-container>
+
+
+
+                <!-- doj Column -->
+                <ng-container matColumnDef="doj">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>DOJ</th>
+                  <td mat-cell *matCellDef="let element">{{ element.created_at | date : 'medium' }}</td>
+                </ng-container>
+
+                <!-- rating Column -->
+                <ng-container matColumnDef="rating">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Ratings</th>
+                  <td mat-cell *matCellDef="let element">
+                    
+                    <div class="rating-hm d-flex justify-content-center align-items-center">
+                      <div class="star-rating">
+                        <p >
+                          <span [ngStyle]="{'width':(element?.rating*100/5)+'%'}">
+      
+                          </span>
+                        </p>
+                        
+                      </div>
+                    </div>
+                  </td>
+                </ng-container>
+
+
+                <!-- reviews Column -->
+                <ng-container matColumnDef="reviews">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Reviews</th>
+                  <td mat-cell *matCellDef="let element">{{ element.reviews ? element.reviews : '-' }}</td>
+                </ng-container>
+
+
+
+                <!-- action Column -->
+                <ng-container matColumnDef="action">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+                  <td mat-cell *matCellDef="let element">
+                    <mat-slide-toggle [checked]="element?.isBlocked == '1'"
+                      (change)="blockUnblock(element._id, $event)"></mat-slide-toggle>
+                  </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumnsTwo"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumnsTwo"></tr>
+              </table>
+            </div>
+
+            <mat-paginator #TableTwoPaginator="matPaginator" [pageSize]="10"
+              [pageSizeOptions]="[ 10, 20, 30]"></mat-paginator>
+          </mat-tab>
+          <mat-tab label="Rejected">
+
+            <div class="m-8 table-search">
+              <mat-form-field appearance="outline" class="mt-3px">
+                <mat-icon matPrefix>search</mat-icon>
+                <input matInput placeholder="Search" (keyup)="searchRejected($event)">
+              </mat-form-field>
+              <!-- <div>
+                <select class="form-select" name="filter" id="" (change)="consultTypeRejectFilter($event)">
+                  <option value="" selected hidden>Choose Filter</option>
+
+                  <option value="Home Appliances">Home Appliances</option>
+                  <option value="Electronics">Electronics</option>
+                </select>
+              </div> -->
+              <!-- <div>
+                <select class="form-select" name="rating" id="rating">
+                  <option value="" selected hidden>Choose Rating</option>
+
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div> -->
+            </div>
+            <div class="table-responsive">
+              <table mat-table [dataSource]="dataSourceThree">
+                <!--- Note that these columns can be defined in any order.
+                                        The actual rendered columns are set as a property on the row definition" -->
+
+                <!-- Position Column -->
+                <ng-container matColumnDef="position">
+                  <th mat-header-cell *matHeaderCellDef>S.No.</th>
+                  <td mat-cell *matCellDef="let element; let i = index">
+                    {{ TableOnePaginator.pageIndex * TableOnePaginator.pageSize + (i + 1) }}
+                  </td>
+                </ng-container>
+
+                <!-- user_name Column -->
+                <ng-container matColumnDef="user_name">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>User Name</th>
+                  <td mat-cell *matCellDef="let element">{{ element?.firstName }} {{ element?.lastName }}</td>
+                </ng-container>
+
+                <!-- email Column -->
+                <ng-container matColumnDef="email">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Email Address</th>
+                  <td mat-cell *matCellDef="let element">{{ element.email ? element.email : '-' }}</td>
+                </ng-container>
+
+                <!-- number Column -->
+                <ng-container matColumnDef="number">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Mobile Number</th>
+                  <td mat-cell *matCellDef="let element">{{ element?.countryCode }} {{ element?.mobileNumber }}</td>
+                </ng-container>
+
+                <!-- type Column -->
+                <ng-container matColumnDef="type">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Consultant Type</th>
+                  <td mat-cell *matCellDef="let element">
+                    <span *ngFor="let category of element?.consultantType; let i = index">
+                      {{category?.categoryName}} <span *ngIf="element?.consultantType.length -1 != i"> ,</span>
+                    </span>
+                  </td>
+                </ng-container>
+
+                <!-- address Column -->
+                <ng-container matColumnDef="address">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Address</th>
+                  <td mat-cell *matCellDef="let element">
+                    <button mat-stroked-button (click)="showAddressDialog(element)" color="primary">
+
+                      <i class="bi bi-eye"></i> View
+                    </button>
+                  </td>
+                </ng-container>
+
+
+                <!-- experience Column -->
+                <ng-container matColumnDef="experience">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Experience (Year)</th>
+                  <td mat-cell *matCellDef="let element">{{ element.experience }}</td>
+                </ng-container>
+
+
+
+                <!-- gender Column -->
+                <ng-container matColumnDef="gender">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Gender</th>
+                  <td mat-cell *matCellDef="let element">{{ (element.gender == 1) ? "Male" : (element.gender == 2) ?
+                    'Female' : (element.gender == 3) ? 'Other' : 'NA'}}</td>
+                </ng-container>
+
+
+
+                <!-- nationality Column -->
+                <ng-container matColumnDef="nationality">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Nationality</th>
+                  <td mat-cell *matCellDef="let element">{{ element.nationality }}</td>
+                </ng-container>
+
+
+
+                <!-- document Column -->
+                <ng-container matColumnDef="document">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Document</th>
+                  <td mat-cell *matCellDef="let element">
+
+                    <button mat-stroked-button color="primary" (click)="showModalDialog(element)"><i class="bi bi-eye"></i> View</button>
+
+                  </td>
+                </ng-container>
+
+
+
+                <!-- bank_details Column -->
+                <ng-container matColumnDef="bank_details">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Bank Details</th>
+                  <td mat-cell *matCellDef="let element">
+                    <button mat-stroked-button color="primary" (click)="banklDialog(element)"><i class="bi bi-eye"></i> View</button>
+
+                  </td>
+                </ng-container>
+
+
+
+                <!-- language Column -->
+                <ng-container matColumnDef="language">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Preferred Language</th>
+                  <td mat-cell *matCellDef="let element">{{ element.language }}</td>
+                </ng-container>
+
+                <!-- action Column -->
+                <ng-container matColumnDef="action">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+                  <td mat-cell *matCellDef="let element">
+                    <div class="d-flex justify-content-center gap-2">
+                      <button mat-mini-fab color="primary">
+
+                        <mat-icon title="Accept" (click)='AcceptReject(element._id, true)'>check</mat-icon>
+                      </button>
+                      <button mat-mini-fab color="warn">
+
+                        <mat-icon title="Delete" (click)=deleteRejected(element._id)>delete</mat-icon>
+                      </button>
+                    </div>
+
+                  </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumnsThree"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumnsThree"></tr>
+              </table>
+            </div>
+
+            <mat-paginator #TableThreePaginator="matPaginator" [pageSize]="10"
+              [pageSizeOptions]="[ 10, 20, 30]"></mat-paginator>
+          </mat-tab>
+
+        </mat-tab-group>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+<p-dialog header="Documents" [(visible)]="position" [modal]="true" [breakpoints]="{'960px': '75vw'}"
+  [style]="{width: '35vw'}" [draggable]="false" [resizable]="false">
+
+  <!-- <div class="multiple_image">
+    <div class="img_item">
+      <img src="{{elemetData?.documents[0]}}" class="documents-img" alt="">
+    </div>
+    <div class="img_item">
+      <img src="{{elemetData?.documents[1]}}" class="documents-img" alt="">
+    </div>
+    <div class="img_item">
+      <img src="{{elemetData?.documents[2]}}" class="documents-img" alt="">
+    </div>
+    <div class="img_item">
+      <img src="{{elemetData?.documents[4]}}" class="documents-img" alt="">
+    </div>
+
+  </div> -->
+
+ 
+<div class="d-flex gap-2 justify-content-center">
+  <div class="card_custom" (click)="redirectToNewTab(elemetData?.documents[0])">
+    <img class="document_icon" src="assets/images/passport.svg" alt="">
+    <button mat-flat-button color="primary">Passport/Id</button>
+  </div>
+
+  <div class="card_custom" (click)="redirectToNewTab(elemetData?.documents[1])">
+    <img class="document_icon" src="assets/images/cv.svg" alt="">
+    <button mat-flat-button color="primary">CV</button>
+  </div>
+
+  <div class="card_custom" (click)="redirectToNewTab(elemetData?.documents[2])">
+    <img class="document_icon" src="assets/images/certificate.svg" alt="">
+    <button mat-flat-button color="primary">Certificate</button>
+  </div>
+
+  <div class="card_custom" (click)="redirectToNewTab(elemetData?.documents[3])">
+    <img class="document_icon" src="assets/images/documents.svg" alt="">
+    <button mat-flat-button color="primary">Others</button>
+  </div>
+
+
+</div>
+
+</p-dialog>
+
+
+
+<!----------------Address Modal------->
+<p-dialog header="Address" [(visible)]="addressModal" [modal]="true" [breakpoints]="{'960px': '75vw'}"
+  [style]="{width: '45vw'}" [draggable]="false" [resizable]="false">
+
+  <div class="multiple_image"> {{elemetData?.address}}</div>
+
+</p-dialog>
+
+<!----------------------------------- Bank details modal  --------------------------------->
+<p-dialog header="Bank Details" [(visible)]="bank" [modal]="true" [breakpoints]="{'960px': '75vw'}"
+  [style]="{width: '45vw'}" [draggable]="false" [resizable]="false">
+
+  <div class="modal_body">
+    <div class="row">
+      <div class="col">
+        <table>
+          <tr>
+            <th>Account Holder Name</th>
+            <td>{{elemetBankData?.accountName}}</td>
+          </tr>
+
+          <tr>
+            <th>Account Number</th>
+            <td>{{elemetBankData?.accountNumber}}</td>
+          </tr>
+          <tr>
+            <th>IBAN Code</th>
+            <td>{{elemetBankData?.ibanNumber}}</td>
+          </tr>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+</p-dialog>

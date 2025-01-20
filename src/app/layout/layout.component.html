@@ -1,0 +1,109 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>
+      <div class="logo">
+        <img src="assets/images/header-logo.png" class="img-fluid" alt="Company Logo" />
+      </div>
+    </mat-toolbar>
+    <mat-divider></mat-divider>
+
+    <app-sidenav></app-sidenav>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar class="header-mat">
+      <mat-toolbar-row class="justify-content-between justify-content-lg-end">
+        <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+          *ngIf="isHandset$ | async">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+        <div class="left-side-button">
+          <div class="left-button" mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon class="me-1">account_circle</mat-icon>
+            <span class="username">Admin</span>
+            <mat-icon>arrow_drop_down</mat-icon>
+          </div>
+        </div>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>
+            <mat-icon>account_circle</mat-icon>
+            <span>Edit Profile</span>
+          </button>
+
+          <button mat-menu-item (click)="onClickChangePassword()">
+            <mat-icon>settings</mat-icon>
+            <span>Settings</span>
+          </button>
+
+          <button mat-menu-item routerLink="/login">
+            <mat-icon>exit_to_app</mat-icon>
+            <span>Logout</span>
+          </button>
+        </mat-menu>
+      </mat-toolbar-row>
+    </mat-toolbar>
+
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<!-- view modal starts -->
+<p-dialog header="Change Password" [(visible)]="view" [modal]="true" [style]="{ width: '30vw' }" [maximizable]="false"
+  [draggable]="false" [resizable]="false">
+  <div class="modal_body">
+    <form [formGroup]="changepasswordForm">
+      <div class="row">
+        <div class="col-12 mb-3">
+          <div class="form-group">
+            <label for="validationCustom03" class="form-label">Old Password</label>
+            <input type="text" class="form-control"  maxlength="10" formControlName="password" />
+            <mat-error *ngIf="submitted && f['password'].errors">
+              <div *ngIf="f['password'].errors['required']">
+                Please Enter Old Password
+              </div>
+              <div *ngIf="f['password'].errors['minlength']">
+                Min Password length should be 10
+              </div>
+            </mat-error>
+          </div>
+        </div>
+        <div class="col-12 mb-3">
+          <div class="form-group">
+            <label for="validationCustom03" class="form-label">New Password</label>
+            <input type="text" formControlName="newPassword" maxlength="10" class="form-control" />
+            <mat-error *ngIf="submitted && f['newPassword'].errors">
+              <div *ngIf="f['newPassword'].errors['required']">
+                Please Enter New Password
+              </div>
+              <div *ngIf="f['newPassword'].errors['minlength']">
+                Min Password length should be 10
+              </div>
+            </mat-error>
+          </div>
+        </div>
+        <div class="col-12 mb-3">
+          <div class="form-group">
+            <label for="validationCustom03" class="form-label">Confirm Password</label>
+            <input type="text" formControlName="confirmnewPassword" maxlength="10" class="form-control" />
+            <mat-error *ngIf="submitted && f['confirmnewPassword'].errors">
+              <div *ngIf="f['confirmnewPassword'].errors['required']">
+                Please Enter Confirm Password
+              </div>
+              <div *ngIf="f['confirmnewPassword'].errors['minlength']">
+                Min Password length should be 10
+              </div>
+            </mat-error>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <div class="col-12 text-center mt-3">
+      <button mat-flat-button color="primary" (click)="changePassword()">
+        Save
+      </button>
+    </div>
+  </div>
+</p-dialog>
+
+<!-- view modal ends -->

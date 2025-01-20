@@ -1,0 +1,109 @@
+<div class="container-fluid">
+
+  <div class="row m-4 justify-content-center">
+    <div class="row mb-4">
+      <div class="heading">
+        <h2>Askperts Management</h2>
+      </div>
+    </div>
+
+
+    <div class="body">
+      <div class="mat-elevation-z8 ">
+        <div class="table-search">
+          <mat-form-field appearance="outline">
+            <mat-icon matPrefix>search</mat-icon>
+            <input matInput placeholder="Search" (keyup)="searchMethod($event)">
+          </mat-form-field>
+
+      </div>
+        <div class="table-responsive">
+          <table mat-table [dataSource]="dataSource">
+            <!-- Position Column -->
+            <ng-container matColumnDef="position">
+              <th mat-header-cell *matHeaderCellDef>S.No.</th>
+              <td mat-cell *matCellDef="let element; let i = index">
+                {{ paginator.pageIndex * paginator.pageSize + (i + 1) }}
+              </td>
+            </ng-container>
+
+            <!-- user_name Column -->
+            <ng-container matColumnDef="user_name">
+              <th mat-header-cell *matHeaderCellDef>User Name</th>
+              <td mat-cell *matCellDef="let element">{{ element?.firstName }} {{ element?.lastName }}</td>
+            </ng-container>
+
+            <!-- email Column -->
+            <ng-container matColumnDef="email">
+              <th mat-header-cell *matHeaderCellDef>Email Address</th>
+              <td mat-cell *matCellDef="let element">{{ element?.email }}</td>
+            </ng-container>
+
+            <!-- number Column -->
+            <ng-container matColumnDef="number">
+              <th mat-header-cell *matHeaderCellDef>Mobile Number</th>
+              <td mat-cell *matCellDef="let element">
+                {{ element?.countryCode }} {{ element?.mobileNumber }}
+              </td>
+            </ng-container>
+
+            <!-- country Column -->
+            <ng-container matColumnDef="country">
+              <th mat-header-cell *matHeaderCellDef>Country</th>
+              <td mat-cell *matCellDef="let element">{{ element?.country }}</td>
+            </ng-container>
+
+            <!-- purchased Column -->
+            <ng-container matColumnDef="purchased">
+              <th mat-header-cell *matHeaderCellDef>Purchased</th>
+              <td mat-cell *matCellDef="let element">
+                <mat-icon routerLink="/home/user-mgmt/purchased-plan">visibility</mat-icon>
+              </td>
+            </ng-container>
+
+            <!-- consultation Column -->
+            <ng-container matColumnDef="consultation">
+              <th mat-header-cell *matHeaderCellDef>
+                Total Number Of Consultation
+              </th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.consultation ? element.consultation : "-" }}
+              </td>
+            </ng-container>
+
+            <!-- joining_date Column -->
+            <ng-container matColumnDef="joining_date">
+              <th mat-header-cell *matHeaderCellDef>Date & Time</th>
+              <td mat-cell *matCellDef="let element">
+                {{ element?.created_at | date : "medium" }}
+              </td>
+            </ng-container>
+
+            <!-- status Column -->
+            <ng-container matColumnDef="status">
+              <th mat-header-cell *matHeaderCellDef>Status</th>
+              <td mat-cell *matCellDef="let element">
+                {{ element?.active ? "Active" : "Inactive" }}
+              </td>
+            </ng-container>
+
+            <!-- action Column -->
+            <ng-container matColumnDef="action">
+              <th mat-header-cell *matHeaderCellDef>Action</th>
+              <td mat-cell *matCellDef="let element">
+                <mat-slide-toggle [checked]="element?.isBlocked == '1'"
+                  (change)="blockUnblock(element._id, $event)"></mat-slide-toggle>
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          </table>
+        </div>
+        <mat-paginator #paginator [pageSizeOptions]="[10, 20, 30]" showFirstLastButtons
+          aria-label="Select page of periodic elements">
+        </mat-paginator>
+      </div>
+    </div>
+  </div>
+</div>

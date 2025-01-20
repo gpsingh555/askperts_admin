@@ -1,0 +1,34 @@
+<div #closeDialog mat-dialog-close class=" text-end">
+    <mat-icon>clear</mat-icon>
+</div>
+
+<form [formGroup]="questionAnswerForm">
+    <div class="row">
+        <div class="col-12">
+
+            <div class="form-group mb-3">
+                <label for="" class="form-label">
+                    Questions -1
+                </label>
+                <input type="text" formControlName="question" class="form-control">
+            </div>
+
+        </div>
+
+        <div class="col-12 mb-3">
+
+            <div class="form-group">
+                <label for="" class="form-label">
+                    Answer
+                </label>
+                <textarea formControlName="answer" cols="30" rows="10" class="form-control"></textarea>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="text-center mt-3">
+        <button type="submit" mat-raised-button color="primary" (click)="addQuestionAnswer()">Update</button>
+    </div>
+</form>

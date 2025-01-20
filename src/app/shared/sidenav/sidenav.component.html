@@ -1,0 +1,54 @@
+<mat-nav-list>
+
+
+
+    <!-- <mat-divider></mat-divider> -->
+    <div class="sidnav-list">
+        <a mat-list-item routerLink="/home/dashboard" routerLinkActive="active">
+            <mat-icon>dashboard</mat-icon> Dashboard
+        </a>
+
+        <a *ngIf="user?.role == 1" mat-list-item [routerLink]="['/home/sub-admin']" [class]="getClass()">
+            <mat-icon>group</mat-icon> Sub-admin Management
+        </a>
+
+        <a *ngIf="user?.role == 1 || (user?.role == 2 && user?.user_mngnt )" mat-list-item class="sidenav-item userNav" routerLink="/home/user-mgmt" routerLinkActive="active">
+            <mat-icon>group</mat-icon> Askperts Management
+        </a>
+
+
+        <a *ngIf="user?.role == 1 || (user?.role == 2 && user?.consultant_mngnt )" mat-list-item routerLink="/home/consultant-mgmt" routerLinkActive="active">
+            <mat-icon>time_to_leave</mat-icon>Pro Management
+        </a>
+
+        <a *ngIf="user?.role == 1 || (user?.role == 2 && user?.category_mngnt ) " mat-list-item [routerLink]="['/home/category-mgmt']" [class]="getCategoryActive()">
+            <mat-icon>time_to_leave</mat-icon> Category Management
+        </a>
+        <a *ngIf="user?.role == 1 || (user?.role == 2 && user?.banner_mngnt ) " mat-list-item routerLink="/home/banner-management" routerLinkActive="active">
+            <mat-icon>image</mat-icon> Banner Management
+        </a>
+        <a *ngIf="user?.role == 1 || (user?.role == 2 && user?.subcription_mngnt ) " mat-list-item routerLink="/home/subscription-mgt" routerLinkActive="active">
+            <mat-icon>group</mat-icon> Subscription Management
+        </a>
+
+        <a *ngIf="user?.role == 1 || (user?.role == 2 && user?.payment_mngnt ) " mat-list-item routerLink="/home/payment-management" routerLinkActive="active">
+            <mat-icon>group</mat-icon> Payment Management
+        </a>
+        <a mat-list-item routerLink="/home/consulation-done" routerLinkActive="active">
+            <mat-icon>group</mat-icon> Calls
+        </a>
+        <a mat-list-item routerLink="/home/cms-management" routerLinkActive="active">
+            <mat-icon>group</mat-icon> CMS Management
+        </a>
+        <a mat-list-item routerLink="/home/report-management" routerLinkActive="active">
+            <mat-icon>group</mat-icon> Report Management
+        </a>
+        <a mat-list-item routerLink="/home/notification-management" routerLinkActive="active">
+            <mat-icon>group</mat-icon> Notification Management
+        </a>
+        <a mat-list-item routerLink="/home/commision-management" routerLinkActive="active">
+            <mat-icon>group</mat-icon> commission Percentage Management
+        </a>
+        
+    </div>
+</mat-nav-list>

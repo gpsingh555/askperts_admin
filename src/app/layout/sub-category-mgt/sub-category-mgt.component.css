@@ -1,0 +1,25 @@
+.upload-box {
+    height: 80px;
+    width: 80px;
+    float: left;
+    border: 1px solid #ddd;
+}
+.upload-Img .btn-light {
+    padding: 4px;
+    font-size: 14px;
+    position: relative;
+    overflow: hidden;
+    color: #27004e;
+    border: 1px solid #27004e;
+}
+.btn-light input {
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    width: 133px;
+}
+.upload-Img {
+    display: flex;
+    align-items: center;
+    padding: 3px 0px;
+}

@@ -1,0 +1,238 @@
+.cameradiv {
+    position: absolute;
+    left: 120px;
+    bottom: 6px;
+}
+
+
+
+/* / images uploading / */
+
+.add-section {
+    width: 166px;
+    height: 130px;
+    text-align: center;
+    padding: 10px;
+    border-radius: 4px;
+    background-clip: border-box;
+    box-shadow: 0 0 7px rgb(0 0 0 / 10%);
+    border: 0px solid hsl(195deg 13% 94%);
+    border-radius: 0.25rem;
+    background: #FAFAFA 0% 0% no-repeat padding-box;
+    border: 1px dashed #BDBDBD;
+    border-radius: 6px 6px 0px 0px;
+    position: relative;
+    margin-right: 25px;
+    margin-bottom: 20px;
+}
+
+.file-upload-button span {
+    background: #1F70C1;
+    color: #fff !important;
+    display: block;
+    font-size: 14px !important;
+    padding: 10px 5px;
+    border-radius: 0px 0px 6px 6px;
+}
+
+.add-section span {
+    font-size: 20px;
+    color: #0A66C2;
+    display: block;
+}
+
+.file-upload-button {
+    width: 109%;
+    height: 130px;
+    background-color: transparent;
+    overflow: hidden;
+    position: absolute;
+    font-size: 20px;
+    line-height: 20px;
+    letter-spacing: 0;
+    color: #0A66C2;
+    border: 0;
+    margin-top: 2px;
+    bottom: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+/* 
+.file-upload-button::after {
+    content: 'Upload';
+    color: #008296;
+    font-size: 14px;
+    text-align: center;
+} */
+
+.file-upload-button input[type="file"] {
+    /* / // font-size: 56px; / */
+    height: 130px;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+}
+
+.file-info {
+    color: hsl(229deg 46% 43%);
+    margin-left: 0.5rem;
+}
+
+.multiple-image {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    /* / / justify-content: center; / / */
+    width: 100%;
+    max-width: 1000px;
+    /* / margin: 0 auto; / */
+    margin-top: 10px;
+}
+
+.multiple-image .productAddfromImages {
+    width: 166px;
+    height: 130px;
+    background: hsl(0deg 0% 100%);
+    /* / / border: 1px dashed hsl(210deg 14% 83%); / / */
+    border-radius: 6px;
+    position: relative;
+    margin-right: 25px;
+    margin-bottom: 20px;
+    border: 1px solid #DFDFDF;
+}
+
+.multiple-image .productAddfromImages:last-child {
+    margin-right: 0;
+}
+
+.add-section img {
+    display: block;
+    margin: 0 auto;
+}
+
+.multiple-image .productAddfromImages .multi-img {
+    width: 100%;
+    /* / / width: 282px; / / */
+    height: 130px;
+    border-radius: 10px;
+    /* position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); */
+}
+
+.multiple-image .productAddfromImages .remove {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    display: none;
+}
+
+.productAddfromImages:hover .remove {
+    display: block !important;
+}
+
+
+/* / images uploading / */
+
+.remove {
+    position: absolute;
+    right: -8px;
+    top: -8px;
+    background: red;
+    color: white;
+    /* / padding: 5px; / */
+    text-align: center;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+}
+
+th{
+    font-size: 1.4rem;
+    font-family: 'Lexend, Bold';
+}
+ td{
+    font-size: 1.2rem;
+    font-family: 'Lexend, Regular';
+
+}
+
+
+/* .card-document{
+    height: 50px;
+} */
+
+
+.card_custom{
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 5px;
+    background-color: #BDBDBD;
+    padding: 10px;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+.card_custom img{
+ align-self: center;
+}
+.document_icon{
+    height: 70px;
+    width: 70px;
+}
+
+
+
+.star-rating {
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    height: 1em;
+    line-height: 1;
+    font-size: 17px;
+    width: 99px;
+    font-family: 'star';
+    font-weight: 400;
+    word-break: keep-all;
+    margin-bottom: 5px;
+    }
+    .star-rating:before {
+    content: "\f006\f006\f006\f006\f006";
+    font-family: FontAwesome;
+    letter-spacing: 0.3em;
+    opacity: .25;
+    float: left;
+    top: 0;
+    left: 0;
+    position: absolute;
+    color: #ff9900;
+    }
+    .star-rating span {
+    overflow: hidden;
+    float: left;
+    top: 0;
+    left: 0;
+    position: absolute;
+    padding-top: 1.5em;
+    }
+    .star-rating span:before {
+    content: "\f005\f005\f005\f005\f005";
+    font-family: FontAwesome;
+    letter-spacing: 0.3em;
+    top: 0;
+    position: absolute;
+    left: 0;
+    color: #ff9900;
+    }

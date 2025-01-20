@@ -1,0 +1,815 @@
+/* You can add global styles to this file, and also import other style files */
+
+@font-face {
+  font-family: "Lexend, Black";
+  src: url("./assets/fonts/AvenirBlack.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Lexend, Bold";
+  src: url("./assets/fonts/AvenirBold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Lexend, Extra-bold";
+  src: url("./assets/fonts/AvenirBold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Lexend, Extra-Light";
+  src: url("./assets/fonts/AvenirLight.ttc") format("truetype");
+}
+
+@font-face {
+  font-family: "Lexend, Light";
+  src: url("./assets/fonts/AvenirLight.ttc") format("truetype");
+}
+
+@font-face {
+  font-family: "Lexend, Medium";
+  src: url("./assets/fonts/AvenirMedium.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Lexend, Regular";
+  src: url("./assets/fonts/AvenirRegular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Lexend, Semi-Bold";
+  src: url("./assets/fonts/AvenirSemibold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Lexend, Thin";
+  src: url("./assets/fonts/AvenirThin.ttf") format("truetype");
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: "Lexend, Regular";
+  font-size: 10px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Lexend, Regular";
+}
+
+h3,
+h2 {
+  font-family: "Lexend, Extra-bold";
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+.fa {
+  cursor: pointer;
+}
+
+.mat-toolbar-row {
+  /* justify-content: end !important; */
+}
+
+.form-control,.form-label,.form-check-label{
+font-size: 1.4rem;
+}
+.form-control:focus{
+  box-shadow:none;
+}
+
+.mat-typography h1,
+.mat-typography h2,
+.mat-typography h3,
+.mat-typography h4,
+.mat-typography h5,
+.mat-typography h6 {
+  font-family: "Lexend, Regular";
+  margin-bottom: 0;
+}
+
+body {
+  font-family: "Lexend, Regular" !important;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-header-cell {
+  color: #27004e;
+  font-size: 1.4rem;
+  font-weight: 500;
+  min-width: 135px !important;
+  /* max-width: 15rem !important; */
+}
+.mat-cell,
+.mat-footer-cell {
+  font-size: 1.2rem;
+  color: #000000;
+}
+th {
+  font-size: 1.4rem;
+  font-family: "Lexend, Bold";
+}
+td {
+  font-size: 1.2rem;
+  font-family: "Lexend, Regular";
+}
+
+tr:nth-child(even){background-color: #f2f2f2;}
+.table-search {
+  background-color: #d2d0d8;
+  padding: 1rem;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 10px;
+}
+
+th.mat-header-cell,
+td.mat-cell,
+td.mat-footer-cell {
+  text-align: center !important;
+}
+
+.mat-tab-body-content {
+  background-color: #d2d0d8;
+}
+/********************* authentication-modules-component-custom-css start *************************/
+
+.mat-form-field-wrapper {
+  padding-bottom: 0.2rem;
+}
+
+#authentication {
+  width: 100%;
+  height: 100vh;
+  /* background-color: #fbf5ff; */
+  background-image: url("./assets/images/login_background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* .logo img {
+  width: 90%;
+} */
+
+.logo {
+  text-align: center;
+}
+
+#authentication mat-card {
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border-radius: 1rem;
+  opacity: 1;
+  padding: 3.2rem 2.5rem;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
+.main-form mat-label {
+  display: block;
+  font-size: 1.4rem;
+  font-family: "Lexend, Regular";
+  color: #313131;
+  margin-bottom: 0.8rem;
+}
+
+.main-form .mat-form-field-appearance-outline .mat-form-field-outline {
+  top: 0 !important;
+}
+
+.main-form .mat-form-field-infix {
+  border-top: 0px;
+}
+
+.main-form .mat-form-field-appearance-outline .mat-form-field-infix {
+  padding: 10px 0 10px 0;
+}
+
+.main-form .mat-form-field-label-wrapper {
+  padding-top: 0.84375em;
+}
+
+.main-form input.mat-input-element {
+  font-size: 16px;
+  font-family: "Lexend, Regular";
+  /* color: #acb5c2; */
+  color: #0d131d;
+}
+
+.main-form .mat-form-field-flex {
+  background: #f6f8fb;
+  border: 0.5px solid #eef2f8;
+  border-radius: 10px;
+  align-items: center !important;
+}
+
+.main-form .mat-form-field-outline-thick {
+  opacity: 0 !important;
+}
+
+.main-form .mat-form-field-appearance-outline .mat-form-field-outline {
+  opacity: 0;
+}
+
+.main-form .mat-form-field-appearance-outline .mat-form-field-flex:hover {
+  outline: none !important;
+}
+
+.main-form
+  .mat-form-field:not(.mat-form-field-appearance-legacy)
+  .mat-form-field-suffix
+  .mat-icon-button {
+  height: 0px !important;
+}
+
+.main-form .mat-form-field-appearance-outline .mat-form-field-suffix {
+  top: 6px !important;
+}
+
+.mat-checkbox-frame {
+  border-color: #3296ff;
+}
+
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background,
+.mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background-color: transparent !important;
+}
+
+.mat-checkbox-mixedmark {
+  background-color: #3296ff !important;
+}
+
+.mat-checkbox-checkmark-path {
+  stroke: #3296ff !important;
+}
+
+.mat-checkbox-layout .mat-checkbox-label {
+  font-size: 12px;
+  font-family: "Lexend, Regular";
+}
+
+.forgot {
+  font-size: 12px;
+  text-decoration: none;
+  color: #959595;
+}
+
+.form-button {
+  margin-top: 20px;
+}
+
+.form-button button {
+  display: block;
+  width: 100%;
+}
+
+.form-heading h3 {
+  color: #0e0e0e;
+  font-size: 22px;
+  font-family: "Lexend, Regular";
+  margin-bottom: 0px;
+}
+
+.form-heading p {
+  font-size: 12px;
+  color: #b6b6b6;
+}
+
+.mat-drawer-inner-container {
+  overflow-x: hidden !important;
+}
+
+/********************* authentication-modules-component-custom-css end ***************************/
+
+.mat-flat-button.mat-primary {
+  background-color: #27004e;
+}
+
+.mat-drawer-side {
+  border-right: none !important;
+}
+
+.mat-sidenav {
+  width: 264px !important;
+}
+
+.mat-drawer-container {
+  height: 100vh;
+}
+
+/* .mat-list-base .mat-list-item .mat-list-item-content{
+  color: #dbd9e1;
+} */
+
+/************************** table-scrollbar-custom-css-start  *********************/
+/* / width / */
+.table-responsive::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  cursor: pointer;
+}
+
+/* / Track / */
+.table-responsive::-webkit-scrollbar-track {
+  background: #dbdae1;
+  border-radius: 8px;
+}
+
+/* / Handle / */
+.table-responsive::-webkit-scrollbar-thumb {
+  /* background: #251050; */
+  background: #27004e;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.table-responsive{
+  min-width: auto;
+    max-height: 400px;
+    overflow: auto;
+  
+  
+}
+
+/************************** table-scrollbar-custom-css-end *********************/
+
+/************************************ custom body scroll bar  starts *****************************/
+
+.mat-drawer-inner-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.mat-drawer-inner-container::-webkit-scrollbar-track {
+  background-color: rgb(17, 17, 17);
+}
+
+.mat-drawer-inner-container::-webkit-scrollbar-thumb {
+  background-color: rgb(97, 96, 96);
+  border-radius: 6px;
+}
+
+.mat-drawer-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.mat-drawer-content::-webkit-scrollbar-track {
+  background-color: #d2d0d8;
+}
+
+.mat-drawer-content::-webkit-scrollbar-thumb {
+  background-color: #27004e;
+  border-radius: 6px;
+}
+
+/************************************ custom body scroll bar  starts *****************************/
+
+/************************************* custom input search field********************************************/
+.table-search mat-label {
+  display: block;
+  font-size: 14px;
+  font-family: "Lexend, Regular";
+  color: #313131;
+  margin-bottom: 8px;
+}
+
+.mat-form-field-underline {
+  display: none !important;
+}
+
+.table-search .mat-form-field-appearance-outline .mat-form-field-outline {
+  top: 0 !important;
+}
+
+.table-search .mat-form-field-infix {
+  border-top: 0px;
+}
+
+.table-search .mat-form-field-appearance-outline .mat-form-field-infix {
+  padding: 10px 0 10px 0;
+}
+
+.table-search .mat-form-field-label-wrapper {
+  padding-top: 0.84375em;
+}
+
+.table-search input.mat-input-element {
+  font-size: 16px;
+  font-family: "Lexend, Regular";
+  color: #404449;
+}
+
+.table-search .mat-form-field-flex {
+  /* background: #f6f8fb; */
+  border: 0.5px solid #eef2f8;
+  /* border-radius: 10px; */
+  background: #ffffff 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 2px #00d4d01f;
+  border-radius: 8px;
+  align-items: center !important;
+}
+
+.table-search .mat-form-field-outline-thick {
+  opacity: 0 !important;
+}
+
+.table-search .mat-form-field-appearance-outline .mat-form-field-outline {
+  opacity: 0;
+}
+
+.table-search .mat-form-field-appearance-outline .mat-form-field-flex:hover {
+  outline: none !important;
+}
+
+.table-search
+  .mat-form-field:not(.mat-form-field-appearance-legacy)
+  .mat-form-field-suffix
+  .mat-icon-button {
+  height: 0px !important;
+}
+
+.table-search .mat-form-field-appearance-outline .mat-form-field-suffix {
+  top: 6px !important;
+}
+
+.mat-form-field-prefix .mat-icon,
+.mat-form-field-suffix .mat-icon {
+  font-size: 20px !important;
+  color: #404449;
+  line-height: 1;
+  font-weight: bold;
+  opacity: .5;
+}
+
+/************************************* custom input search field ends********************************************/
+
+.mat-drawer.mat-drawer-side {
+  z-index: 1 !important;
+}
+
+/************************************** multiple image uploader starts*************************************/
+
+label img {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+}
+.hoverable {
+  position: relative;
+  display: block;
+  cursor: pointer;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+}
+.hoverable .hover-text {
+  position: absolute;
+  display: none;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+.hoverable .background {
+  position: absolute;
+  display: none;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.5);
+  pointer-events: none;
+  border-radius: 50%;
+  z-index: 1;
+}
+.hoverable:hover .hover-text {
+  display: block;
+}
+.hoverable:hover .background {
+  display: block;
+}
+
+#fileInput {
+  display: none;
+}
+
+.img {
+  width: 150px;
+  height: 100px;
+  border-radius: 0%;
+}
+
+.upload_image {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.new {
+  width: 150px;
+}
+
+.text {
+  color: #fff;
+}
+/************************************** multiple image uploader ends*************************************/
+
+/*************************************** multiple image show starts ****************************************/
+.multiple_image {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+.documents-img {
+  width: 200px;
+    height: 200px;
+  object-fit: contain;
+  object-position: center;
+}
+
+.heading {
+  background-color: #00d4d0;
+  font: normal normal medium 28px/36px;
+  letter-spacing: 0px;
+  color: #ffffff;
+  padding: 25px;
+  align-items: center;
+}
+
+.add-img{
+  /* width: 80px;
+    height: 80px; */
+    object-fit: contain;
+}
+
+/* mat silde custom css */
+.mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+  background-color: #27004e59;
+}
+
+.mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+  background-color: #27004e;
+}
+
+.mat-slide-toggle-bar:hover .mat-slide-toggle-persistent-ripple {
+  opacity: 0 !important;
+  display: none !important;
+}
+
+/* mat silde custom css ends */
+
+/**************************** bootstrap custom select drop css  *******************/
+
+.form-select{
+  padding: .7rem 2.25rem .7rem 0.75rem;
+  border: 0.5px solid #eef2f8;
+  /* background: #ffffff 0% 0% no-repeat padding-box; */
+  box-shadow: 0px 3px 2px #00d4d01f;
+  border-radius: 8px;
+  align-items: center !important;
+  font-size: 16px;
+  font-family: "Lexend, Regular";
+  color: #333436;
+}
+
+.mt-3px{
+  margin-top: 3px;
+}
+.form-select:focus{
+  box-shadow: none;
+  border: none;
+  box-shadow: 0px 3px 2px #00d4d01f;
+
+
+
+
+
+    padding: 0.7rem 2.25rem 0.7rem 0.75rem;
+    border: 0.5px solid #eef2f8;
+    /* background: #ffffff 0% 0% no-repeat padding-box; */
+    box-shadow: 0px 3px 2px #00d4d01f;
+    border-radius: 8px;
+    align-items: center !important;
+    font-size: 16px;
+    font-family: "Lexend, Regular";
+    color: #333436;
+
+}
+
+
+.form-select:visited{
+  box-shadow: none!important;
+  border: none!important;
+  box-shadow: 0px 3px 2px #00d4d01f!important;
+
+}
+
+
+
+
+/************************************* custom input field css******************************/
+
+.custom_input{
+  /* display: grid; */
+    /* margin-top: 10px; */
+}
+
+.p-dialog .p-dialog-content {
+  font-size: 16px;
+}
+.custom_input .mat-label {
+    /* display: block;
+    font-size: 16px !important;
+    font-family: "Lexend, Regular";
+    color: #313131;
+    margin-bottom: 8px; */
+  }
+  
+  .custom_input .mat-form-field-appearance-outline .mat-form-field-outline {
+    /* top: 0 !important; */
+  }
+  
+  .custom_input .mat-form-field-infix {
+    /* border-top: 0px; */
+  }
+  
+  .custom_input .mat-form-field-appearance-outline .mat-form-field-infix {
+    /* padding: 10px 0 10px 0; */
+  }
+  
+  .custom_input .mat-form-field-label-wrapper {
+    /* padding-top: 0.84375em; */
+  }
+  
+  .custom_input input.mat-input-element {
+    /* font-size: 16px;
+    font-family: "Lexend, Regular";
+    color: #4f5053; */
+  }
+  
+  .custom_input .mat-form-field-flex {
+    /* background: #f6f8fb;
+    border: 0.5px solid #eef2f8;
+    border-radius: 10px;
+    background: #ffffff 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 2px #00d4d01f;
+    border-radius: 8px;
+    align-items: center !important; */
+  }
+  
+  .custom_input .mat-form-field-outline-thick {
+    /* opacity: 0 !important; */
+  }
+  
+  .custom_input .mat-form-field-appearance-outline .mat-form-field-outline {
+    /* opacity: 0; */
+  }
+  
+  .custom_input .mat-form-field-appearance-outline .mat-form-field-flex:hover {
+    /* outline: none !important; */
+  }
+  
+  .custom_input
+    .mat-form-field:not(.mat-form-field-appearance-legacy)
+    .mat-form-field-suffix
+    .mat-icon-button {
+    /* height: 0px !important; */
+  }
+  
+  .custom_input .mat-form-field-appearance-outline .mat-form-field-suffix {
+    /* top: 6px !important; */
+  }
+  
+  /* .mat-form-field-prefix .mat-icon,
+  .mat-form-field-suffix .mat-icon {
+    font-size: 20px !important;
+    color: #acb5c2;
+    line-height: 1;
+    font-weight: bold;
+  } */
+
+
+
+  .logo img{
+    filter: hue-rotate(160deg);
+  }
+
+  .table-image{
+    background-color: #27004e;
+  padding: 10px 0px;
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+}
+
+.white_bg .p-image-mask{
+  --maskbg: rgba(255, 252, 252, 0.9) !important;
+}
+
+
+/* form-date range */
+
+.form-date .mat-form-field-wrapper {
+  padding-bottom: 0;
+}
+
+.form-date .mat-form-field-appearance-outline .mat-form-field-wrapper {
+  margin: 0 !important;
+}
+
+.form-date .mat-form-field-infix {
+  border-top: 0!important;
+}
+
+.form-date .mat-form-field {
+  font-size: 15px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.form-date .mat-form-field-appearance-outline .mat-form-field-outline {
+  display: flex;
+  position: absolute;
+  top: 5px;
+  left: 0;
+  right: 0;
+  bottom: 0px;
+  pointer-events: none;
+}
+
+.form-date .mat-form-field-appearance-outline .mat-form-field-infix {
+  padding: 0px;
+}
+
+.form-date input.mat-input-element {
+  margin-top: 0px;
+}
+
+.form-date .mat-form-field-label-wrapper {
+  top: -19px;
+  padding-top: 18px;
+}
+
+.form-date .mat-form-field-flex {
+  /* background: #F6F8FB; */
+  border: 0.5px solid #ced4da;
+  border-radius: 10px;
+  align-items: center!important;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  padding: 8px 0.75rem;
+  box-shadow: none;
+}
+
+.form-date .mat-form-field-outline-thick {
+  opacity: 0!important;
+}
+
+.form-date .mat-form-field-appearance-outline .mat-form-field-outline {
+  opacity: 0;
+}
+
+.form-date .mat-form-field-appearance-outline .mat-form-field-flex:hover {
+  outline: none!important;
+}
+
+.form-date .mat-form-field-appearance-outline .mat-form-field-suffix {
+  top: 1px!important;
+}
+
+.form-date .mat-form-field-appearance-outline .mat-form-field-flex {
+  margin-top: 0px;
+}
+
+.form-date{
+  margin-bottom: 4px;
+}
+/* form-date range end */
+
+
+.modal-header .btn-close:focus{
+  box-shadow: none;
+
+}
+
+.modal.fade.show {
+  backdrop-filter: blur(4px);
+  background-color: #01223770;
+}
+
+.modal-backdrop {
+    z-index: 0!important;
+}
+
+.modal-header{
+    padding: 10px 20px;
+}
+
+.modal-title{
+    font-size: 18px;
+    font-weight: 600;
+}

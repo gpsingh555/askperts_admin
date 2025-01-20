@@ -1,0 +1,59 @@
+<mat-dialog-content>
+  <div class="d-flex justify-content-between">
+    <p style="font-weight:bold">Add Commission</p>  
+    <mat-icon class="cl" mat-dialog-close>clear</mat-icon>
+  </div>
+
+  <div class="row">
+    <!-- Category Dropdown -->
+    <div class="col-md-4">
+      <label class="form-label">Categories</label>
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Category</mat-label>
+        <select matNativeControl required [(ngModel)]="categoryId" (change)="selectCategory($event)">
+          <option *ngFor="let item of categories" [value]="item?._id">{{ item?.categoryName }}</option>
+        </select>
+      </mat-form-field>
+    </div>
+
+    <!-- SubCategory Dropdown -->
+    <div class="col-md-4">
+      <label class="form-label">Sub Categories</label>
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>SubCategory</mat-label>
+        <select matNativeControl required [(ngModel)]="subcategoryId" (change)="selectSubCategory($event)">
+          <option *ngFor="let item of subcategories" [value]="item?._id">{{ item?.subCategoryName }}</option>
+        </select>
+      </mat-form-field>
+    </div>
+
+    <!-- SubSubCategory Dropdown -->
+    <div class="col-md-4">
+      <label class="form-label">Sub Sub Categories</label>
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>SubSubCategory</mat-label>
+        <select matNativeControl required [(ngModel)]="subsubcategoryId" (change)="selectSubSubCategory($event)">
+          <option *ngFor="let item of subsubcategories" [value]="item?._id">{{ item?.name }}</option>
+        </select>
+      </mat-form-field>
+    </div>
+
+    <!-- Commission Percentage Input -->
+    <div class="col-md-12">
+      <form [formGroup]="addComissionForm">
+        <div class="form-group mb-3">
+          <label class="form-label">Commission Percentage</label>
+          <input type="text" class="form-control" placeholder="Enter Commission %" formControlName="commission">
+        </div>
+      </form>
+    </div>
+
+  </div>
+
+  <!-- Submit Button -->
+  <div class="text-center mt-3">
+    <button mat-raised-button color="primary" (click)="addCommission()">
+      {{ data ? 'Update' : 'Add' }}
+    </button>
+  </div>
+</mat-dialog-content>

@@ -1,0 +1,99 @@
+<div class="container-fluid">
+
+    <div class="row m-4 justify-content-center">
+        <div class="row mb-4">
+            <div class="heading d-flex justify-content-between">
+                <h2>Notification Management</h2>
+
+                <button mat-flat-button color="primary" routerLink="/home/send-notification">Send Notification</button>
+            </div>
+        </div>
+
+        <div class="body">
+            <div class="mat-elevation-z8 ">
+                <div class="row d-flex justify-content-between p-3">
+
+                    <div class="col-md-4 mt-2">
+
+                        <div class="notification-form">
+                            <form [formGroup]="notiifcationForm">
+                            <div class="form group mt-2">
+                                <label for="">Notification Title</label>
+                                <input type="text" class="form-control" formControlName="title">
+                                <div class="text-danger invalid-message" *ngIf="submitted && f['title'].errors">
+                                    <div *ngIf="f['title'].errors['required']">Title is Required
+                                    </div>
+                                   
+                                     </div>
+
+                            </div>
+
+                            <div class="form group mt-2">
+                                <label for="">Notification Description</label>
+                                <textarea name="" id="" class="form-control" rows="8" formControlName="description"></textarea>
+                                <div class="text-danger invalid-message" *ngIf="submitted && f['description'].errors">
+                                    <div *ngIf="f['description'].errors['required']">Description is Required
+                                    </div>
+                                   
+                                     </div>
+                            </div>
+
+                            <div class="text-center mt-4">
+                                <button (click)="addNotification()" mat-raised-button color="primary">Send
+                                    Notification</button>
+                            </div>
+                            </form>
+
+                        </div>
+
+
+                    </div>
+                    <div class="col-md-4 mt-2">
+                        <ng-multiselect-dropdown
+                        [placeholder]="'User'"
+                        [settings]="dropdownSettings"
+                        [data]="userList"
+                        [(ngModel)]="selectedItems"
+                        (onSelect)="onItemSelect($event)"
+                        (onSelectAll)="onSelectAll($event)"
+                      >
+                      </ng-multiselect-dropdown>
+                    </div>
+
+
+                    <div class="col-md-4 mt-2">
+                        <ng-multiselect-dropdown
+                        [placeholder]="'Consultant'"
+                        [settings]="dropdownSettings1"
+                        [data]="acceptConsultList"
+                        [(ngModel)]="selectedItems1"
+                        (onSelect)="onItemSelect($event)"
+                        (onSelectAll)="onSelectAll($event)"
+                      >
+                      </ng-multiselect-dropdown>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+<!-- view modal starts -->
+<!-- <p-dialog header="Reviews" [(visible)]="view" [modal]="true" [style]="{width: '30vw'}" [maximizable]="false"
+  [draggable]="false" [resizable]="false">
+
+  <div class="modal_body ">
+
+<p>{{element?.call_review}}</p>
+
+  </div>
+</p-dialog> -->
+
+<!-- view modal ends -->

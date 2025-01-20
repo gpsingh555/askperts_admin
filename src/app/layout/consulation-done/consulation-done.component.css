@@ -1,0 +1,43 @@
+
+.star-rating {
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    height: 1em;
+    line-height: 1;
+    font-size: 17px;
+    width: 99px;
+    font-family: 'star';
+    font-weight: 400;
+    word-break: keep-all;
+    margin-bottom: 5px;
+    }
+    .star-rating:before {
+    content: "\f006\f006\f006\f006\f006";
+    font-family: FontAwesome;
+    letter-spacing: 0.3em;
+    opacity: .25;
+    float: left;
+    top: 0;
+    left: 0;
+    position: absolute;
+    color: #ff9900;
+    }
+    .star-rating span {
+    overflow: hidden;
+    float: left;
+    top: 0;
+    left: 0;
+    position: absolute;
+    padding-top: 1.5em;
+    }
+    .star-rating span:before {
+    content: "\f005\f005\f005\f005\f005";
+    font-family: FontAwesome;
+    letter-spacing: 0.3em;
+    top: 0;
+    position: absolute;
+    left: 0;
+    color: #ff9900;
+    }

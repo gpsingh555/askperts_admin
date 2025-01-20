@@ -1,0 +1,143 @@
+<div class="container-fluid">
+
+    <div class="row m-4 justify-content-center">
+        <div class="row">
+            <div class="heading d-flex justify-content-between">
+                <h2>Dashboard</h2>
+                <!-- <button mat-flat-button color="primary" routerLink="/home/add-admin">Add</button> -->
+            </div>
+        </div>
+
+        <div class="body">
+            <div class="mat-elevation-z8 height-80">
+                <div class="header_action">
+                    <div class="table-search">
+                        <form [formGroup]="dateForm">
+                            <mat-form-field appearance="outline">
+                                <mat-date-range-input [rangePicker]="picker1" [max]="today">
+                                    <input matStartDate placeholder="Start date" formControlName="from">
+                                    <input matEndDate placeholder="End date" formControlName="to">
+                                </mat-date-range-input>
+                                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                <mat-date-range-picker #picker1>
+                                    <mat-datepicker-actions>
+                                        <button (click)="reset()" mat-button matDatepickerCancel>Reset</button>
+                                        <button (click)="applyFilter()" mat-raised-button color="primary"
+                                            matDatepickerApply>Apply</button>
+                                    </mat-datepicker-actions>
+                                </mat-date-range-picker>
+                            </mat-form-field>
+                        </form>
+                    </div>
+                </div>
+                <div class="row p-3">
+                    <div class="col-4 mb-3">
+
+                        <div class="card card-body text-center">
+                            <div>
+                                <mat-icon class="dash-icon">star</mat-icon>
+                            </div>
+
+                            <h3>App Rating</h3>
+                            <!-- <select class="form-select mt-3" aria-label="Default select example">
+                            <option selected>Open this select menu</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                          </select> -->
+                            <h3 class="mt-4">5</h3>
+                        </div>
+                    </div>
+                    <div class="col-4 mb-3">
+
+                        <div class="card card-body text-center">
+                            <!-- <h3>Average Call</h3> -->
+                            <div>
+                                <mat-icon class="dash-icon">phone</mat-icon>
+                            </div>
+                            <h3>Total Call Time</h3>
+                            <!-- <select class="form-select mt-3" aria-label="Default select example">
+                            <option selected>Open this select menu</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                          </select> -->
+                            <h3 class="mt-4">{{reportList?.tduration}}</h3>
+                        </div>
+                    </div>
+                    <!-- <div class="col-4 mb-3">
+                    <div class="card card-body text-center">
+                        <h3> Peak Time</h3>
+                          <h3 class="mt-4">FROM 11AM TO 12PM</h3>
+                    </div>
+                </div> -->
+
+                    <div class="col-4 mb-3">
+                        <div class="card card-body text-center">
+                            <div>
+                                <mat-icon class="dash-icon">phone</mat-icon>
+                            </div>
+                            <h3>Number Of Calls</h3>
+
+                            <!-- <select class="form-select mt-3" aria-label="Default select example">
+                            <option selected>Open this select menu</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                          </select> -->
+                            <h3 class="mt-4">{{reportList?.consulatDneCount}}</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="row p-3">
+                    <div class="col-4 mb-3">
+                        <div class="card card-body text-center">
+                            <div>
+                                <mat-icon class="dash-icon">supervisor_account</mat-icon>
+
+                            </div>
+
+                            <h3>total number of consultent</h3>
+                            <h2>{{reportList?.consultantCount}}</h2>
+                        </div>
+                    </div>
+                    <div class="col-4 mb-3">
+                        <div class="card card-body text-center">
+                            <div>
+
+                                <mat-icon class="dash-icon">supervisor_account</mat-icon>
+                            </div>
+
+                            <h3>total number of Users</h3>
+                            <h2>{{reportList?.userCount}}</h2>
+                        </div>
+                    </div>
+                    <div class="col-4 mb-3">
+                        <div class="card card-body text-center">
+                            <div>
+                                <mat-icon class="dash-icon">contact_phone</mat-icon>
+
+                            </div>
+
+                            <h3>total number of consultent done <br> by this platform</h3>
+                            <h2>{{reportList?.consulatDneCount}}</h2>
+                        </div>
+                    </div>
+                    <div class="col-4 mb-3">
+                        <div class="card card-body text-center">
+
+                            <div>
+                                <mat-icon class="dash-icon">account_balance</mat-icon>
+
+                            </div>
+
+                            <h3> total revenue</h3>
+                            <h2> <i class="bi bi-currency-dollar"></i> {{reportList?.revenue1}}</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

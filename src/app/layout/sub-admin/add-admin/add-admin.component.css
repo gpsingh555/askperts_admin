@@ -1,0 +1,9 @@
+/* custom green check box starts  */
+
+.form-check-input:checked {
+    background-color: #3296ff!important;
+    border-color: #3296ff!important;
+}
+
+
+/* custom green check box ends  */
